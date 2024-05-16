@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Authcontroller;
+use App\Http\Controllers\Shopcontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/register', [Authcontroller::class,'getRegister']);
+Route::post('/register', [AuthController::class,'postRegister']);
+
+Route::get('/login', [AuthController::class,'getLogin'])->name('login');;
+Route::post('/login', [AuthController::class,'postLogin']);
+Route::get('/', [ShopController::class, 'index']);
